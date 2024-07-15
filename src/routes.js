@@ -64,6 +64,7 @@ import { CreateDuplicateDriverForm } from "features/drivers/duplicate/CreateDupl
 import { CreateDuplicateTruckForm } from "./features/trucks/duplicate/CreateDuplicateTruckForm";
 import { CreateDuplicateCustomerForm } from "features/customers/duplicate/CreateDuplicateCustomerForm";
 import { CreateAddressForm } from "features/customers/addresses/create/CreateAddressForm";
+import DispatchDetails from "features/dispatches/details/DispatchDetails";
 
 const routes = [
   {
@@ -428,6 +429,16 @@ const routes = [
         component: <DispatchList />,
         layout: "/admin",
       },
+      {
+        path: "/dispatchDetails",
+        name: "Dispatch Details",
+        rtlName: "عالتسعير",
+        mini: "DL",
+        rtlMini: "ع",
+        component: <DispatchDetails />,
+        layout: "/admin",
+      },
+      
       {
         path: "/login",
         component: <Login />,

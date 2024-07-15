@@ -1,6 +1,6 @@
 import React from "react";
 import { useEditCustomerForm } from "./useEditCustomerForm";
-import { CreateEntityForm } from "components/Forms/CreateEntityForm";
+import { CustomerEntityForm } from "components/Forms/CustomerEntityForm";
 
 export const EditCustomerForm = () => {
   const {
@@ -19,7 +19,7 @@ export const EditCustomerForm = () => {
     <>
       {!isLoading && customer && Object.keys(customer).length > 0 && (
         <div className="content">
-          <CreateEntityForm
+          <CustomerEntityForm
             entityName={"Customer"}
             mode="edit"
             initialValue={customer}

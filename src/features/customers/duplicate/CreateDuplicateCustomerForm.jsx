@@ -1,6 +1,6 @@
-import { CreateEntityForm } from "components/Forms/CreateEntityForm";
 import React from "react";
 import { useCreateDuplicateCustomerForm } from "./useCreateDuplicateCustomerForm";
+import { CustomerEntityForm } from "components/Forms/CustomerEntityForm";
 
 export const CreateDuplicateCustomerForm = () => {
   const {
@@ -19,7 +19,7 @@ export const CreateDuplicateCustomerForm = () => {
     <>
       {!isLoading && customer && Object.keys(customer).length > 0 && (
         <div className="content">
-          <CreateEntityForm
+          <CustomerEntityForm
             entityName={"Customer"}
             mode="create"
             initialValue={customer}

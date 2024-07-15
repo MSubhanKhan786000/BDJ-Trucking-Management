@@ -1,7 +1,7 @@
 import React from "react";
 import {useCreateCustomerForm} from "./useCreateCustomerForm";
 import {useGetCustomerMetaData} from "../metadata/useGetCustomerMetaData";
-import {CreateEntityForm} from "../../../components/Forms/CreateEntityForm";
+import { CustomerEntityForm } from "components/Forms/CustomerEntityForm";
 
 export const CreateCustomerForm = () => {
     const {onSubmit, register, handleSubmit, control, isLoading, errors} =
@@ -13,7 +13,7 @@ export const CreateCustomerForm = () => {
         <>
             {!isLoading && (
                 <div className="content">
-                    <CreateEntityForm
+                    <CustomerEntityForm
                         entityName={"Customer"}
                         formFields={customerFormFields}
                         schemaGroups={customerSchemaGroups}
@@ -22,7 +22,7 @@ export const CreateCustomerForm = () => {
                         handleSubmit={handleSubmit}
                         control={control}
                         errors={errors}
-                        filesUploadFlag={false}
+                        // filesUploadFlag={false}
                     />
                 </div>
             )}
