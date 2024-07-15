@@ -1,0 +1,72 @@
+{
+  "name": "black-dashboard-pro-react",
+  "version": "1.2.3",
+  "private": true,
+  "homepage": "https://demos.creative-tim.com/black-dashboard-pro-react/#/admin/dashboard",
+  "scripts": {
+    "start": "react-scripts start",
+    "start-watch": "WATCHPACK_POLLING=true react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "compile-sass": "sass src/assets/scss/black-dashboard-pro-react.scss src/assets/css/black-dashboard-pro-react.css",
+    "minify-sass": "sass src/assets/scss/black-dashboard-pro-react.scss src/assets/css/black-dashboard-pro-react.min.css --style compressed"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
+    "autoprefixer": "10.4.16",
+    "axios": "^1.7.2",
+    "axios-hooks": "^5.0.2",
+    "bootstrap": "4.6.2",
+    "chart.js": "3.9.1",
+    "classnames": "2.3.3",
+    "date-fns": "^3.6.0",
+    "match-sorter": "6.3.1",
+    "moment": "2.29.4",
+    "nouislider": "15.4.0",
+    "perfect-scrollbar": "1.5.5",
+    "postcss": "8.4.32",
+    "prop-types": "15.8.1",
+    "react": ">=18.2.0",
+    "react-big-calendar": "1.8.5",
+    "react-bootstrap-sweetalert": "5.2.0",
+    "react-bootstrap-wizard": "0.0.9",
+    "react-chartjs-2": "3.3.0",
+    "react-datetime": "3.2.0",
+    "react-dom": ">=18.2.0",
+    "react-hook-form": "^7.51.5",
+    "react-jvectormap": "0.0.16",
+    "react-notification-alert": "0.0.13",
+    "react-router-dom": "6.21.1",
+    "react-scripts": "5.0.1",
+    "react-select": "5.8.0",
+    "react-table": "7.8.0",
+    "react-toastify": "^10.0.5",
+    "sass": "1.69.5",
+    "ts-pattern": "^5.2.0",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "@hookform/devtools": "^4.3.1",
+    "ajv": "^7.2.4",
+    "typescript": "5.3.3"
+  },
+  "optionalDependencies": {
+    "eslint-plugin-flowtype": "8.0.3",
+    "reactstrap": "8.10.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "overrides": {
+    "svgo": "3.0.2"
+  }
+}
