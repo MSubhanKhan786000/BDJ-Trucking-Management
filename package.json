@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
+    "ag-grid-community": "^32.0.2",
+    "ag-grid-react": "^32.0.2",
     "autoprefixer": "10.4.16",
     "axios": "^1.7.2",
     "axios-hooks": "^5.0.2",
@@ -40,6 +42,7 @@
     "react-notification-alert": "0.0.13",
     "react-router-dom": "6.21.1",
     "react-scripts": "5.0.1",
+    "react-search-box": "^3.0.0",
     "react-select": "5.8.0",
     "react-table": "7.8.0",
     "react-toastify": "^10.0.5",
