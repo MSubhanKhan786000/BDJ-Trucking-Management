@@ -1,350 +1,52 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import "./DispatchDetails.css";
 import ReactSearchBox from "react-search-box";
+import { useDispatchList } from "../list/useDispatchList";
+import isEqual from 'lodash/isEqual';
 
 function DispatchDetails() {
+
+  const {data} = useDispatchList();
+
+  // console.log("Dispatch All Data: ",data);
+
+  const [rowData, setRowData] = useState([]);
+    
+  useEffect(() => {
+    if (data && !isEqual(data, rowData)) {
+      setRowData(data);
+    }
+  }, [data, rowData]);
+
   const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [rowData, setRowData] = useState([
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Allison Schmitt",
-      age: 22,
-      country: "United States",
-      year: 2012,
-      date: "12/08/2012",
-      sport: "Swimming",
-      gold: 3,
-      silver: 1,
-      bronze: 1,
-      total: 5,
-    },
-    {
-      athlete: "Natalie Coughlin",
-      age: 21,
-      country: "United States",
-      year: 2004,
-      date: "29/08/2004",
-      sport: "Swimming",
-      gold: 2,
-      silver: 2,
-      bronze: 1,
-      total: 5,
-    },
-  ]);
 
   const columns = [
-    { headerName: "Athlete", field: "athlete", filter: "agTextColumnFilter" },
-    { headerName: "Age", field: "age", filter: "agTextColumnFilter" },
-    { headerName: "Country", field: "country", filter: "agTextColumnFilter" },
-    { headerName: "Year", field: "year", filter: "agTextColumnFilter" },
-    { headerName: "Date", field: "date", filter: "agTextColumnFilter" },
-    { headerName: "Sport", field: "sport", filter: "agTextColumnFilter" },
-    { headerName: "Gold", field: "gold", filter: "agTextColumnFilter" },
-    { headerName: "Silver", field: "silver", filter: "agTextColumnFilter" },
-    { headerName: "Bronze", field: "bronze", filter: "agTextColumnFilter" },
-    { headerName: "Total", field: "total", filter: "agTextColumnFilter" },
+    { headerName: "ID", field: "id", filter: "agTextColumnFilter" },
+    { headerName: "Freight Rate", field: "freight_rate", filter: "agTextColumnFilter" },
+    { headerName: "Invoice Amount", field: "invoice_amount", filter: "agTextColumnFilter" },
+    { headerName: "Billing Status", field: "billing_status", filter: "agTextColumnFilter" },
+    { headerName: "Invoice Balance", field: "invoice_balance", filter: "agTextColumnFilter" },
+    { headerName: "Load", field: "load.status", filter: "agTextColumnFilter" },
+    { headerName: "Truck", field: "truck", filter: "agTextColumnFilter" },
+    { headerName: "Driver1", field: "driver1", filter: "agTextColumnFilter" },
+    { headerName: "Driver2", field: "driver2", filter: "agTextColumnFilter" },
+    { headerName: "Scheduled Origin Departure", field: "scheduled_origin_departure_datetime", filter: "agTextColumnFilter" },
+    { headerName: "Scheduled Destination Arrival", field: "scheduled_destination_arrival_datetime", filter: "agTextColumnFilter" },
+    { headerName: "Origin_Destination_Miles", field: "origin_destination_miles", filter: "agTextColumnFilter" },
+    { headerName: "Departure City", field: "departure_city", filter: "agTextColumnFilter" },
+    { headerName: "Departure State", field: "departure_state", filter: "agTextColumnFilter" },
+    { headerName: "Destination City", field: "destination_city", filter: "agTextColumnFilter" },
+    { headerName: "Destination State", field: "destination_state", filter: "agTextColumnFilter" },
+    { headerName: "Overall Trip Miles", field: "overall_trip_miles", filter: "agTextColumnFilter" },
   ];
-  const defaultColDefs = {
-    sortable: true,
-    filter: true,
-    floatingFilter: true,
-    tooltipField: "make",
-  };
 
   const onGridReady = useCallback(params => {
     setGridApi(params.api);
   }, []);
+
 
   const onExportClick = () => {
     if (gridApi) {
@@ -354,10 +56,6 @@ function DispatchDetails() {
     }
   };
 
-  const rowSelectionType = "multiple";
-  const onSelectionChanged = event => {
-    console.log(event.api.getSelectedRows());
-  };
 
   const onFilterTextChange = e => {
     if (gridApi) {
@@ -388,9 +86,10 @@ function DispatchDetails() {
       <div
         className="ag-theme-quartz"
         style={{
-          height: 450,
+          height: 430,
           marginLeft: "1%",
           marginTop: "10px",
+          paddingBottom: "10px",
           marginRight: "20px",
         }}
       >
@@ -400,6 +99,7 @@ function DispatchDetails() {
           onGridReady={onGridReady}
           pagination={true}
           paginationAutoPageSize={true}
+          // paginationPageSize={10}
         />
       </div>
     </div>
