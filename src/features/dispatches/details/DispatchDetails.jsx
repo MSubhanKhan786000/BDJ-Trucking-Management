@@ -41,6 +41,8 @@ function DispatchDetails() {
     { headerName: "Destination City", field: "destination_city", filter: "agTextColumnFilter" },
     { headerName: "Destination State", field: "destination_state", filter: "agTextColumnFilter" },
     { headerName: "Overall Trip Miles", field: "overall_trip_miles", filter: "agTextColumnFilter" },
+    { headerName: "Expense Pay Split", field: "expense_pay_split", filter: "agTextColumnFilter" },
+    { headerName: "Is Active", field: "is_active", filter: "agTextColumnFilter" },
   ];
 
   const onGridReady = useCallback(params => {
